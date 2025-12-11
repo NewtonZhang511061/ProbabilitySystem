@@ -15,7 +15,7 @@ namespace ProbabilitySystemTests
                 new List<string> { "A", "Q", "K" },
                 new List<string> { "A", "Q", "K" },
                 new List<string> { "J", "J", "$" }
-            }));
+            }, 0));
 
             var bet = slotMachine.Spin(1);
 
@@ -32,7 +32,7 @@ namespace ProbabilitySystemTests
                 new List<string> { "A", "Q", "K" },
                 new List<string> { "A", "Q", "K" },
                 new List<string> { "A", "J", "$" }
-            }));
+            }, 0));
 
             var bet = slotMachine.Spin(1);
 
@@ -49,7 +49,7 @@ namespace ProbabilitySystemTests
                 new List<string> { "A", "Q", "K" },
                 new List<string> { "A", "Q", "K" },
                 new List<string> { "J", "Q", "$" }
-            }));
+            }, 0));
 
             var bet = slotMachine.Spin(2);
 
@@ -66,7 +66,24 @@ namespace ProbabilitySystemTests
                 new List<string> { "A", "Q", "K" },
                 new List<string> { "A", "Q", "K" },
                 new List<string> { "J", "J", "K" }
-            }));
+            }, 0));
+
+            var bet = slotMachine.Spin(3);
+
+            Assert.Equal(bet, 20);
+        }
+
+        [Fact]
+        public void WhenRoll_ThenHitRow3_ShouldReturnBet20()
+        {
+            var slotMachine = new SlotMachine(Reels.Create(new List<List<string>>
+            {
+                new List<string> { "A", "Q", "K", "K" },
+                new List<string> { "A", "Q", "K", "K" },
+                new List<string> { "A", "Q", "H", "K" },
+                new List<string> { "A", "Q", "K", "K" },
+                new List<string> { "J", "J", "K", "K" }
+            }, 1));
 
             var bet = slotMachine.Spin(3);
 

@@ -11,11 +11,12 @@ namespace Domain
     public class SlotMachine
     {
         private Reels _reels { get; set; }
+
         public SlotMachine(Reels reels) { 
             _reels = reels;
         }
 
-        public static SlotMachine Create(Reels reels) { 
+        public static SlotMachine Create(Reels reels, int nextIndex) { 
             return new SlotMachine(reels);
         }
 

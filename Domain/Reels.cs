@@ -10,14 +10,19 @@ namespace Domain
     public class Reels
     {
         private List<List<string>> _reels;
-        public Reels (List<List<string>> reels)
+        private int _index;
+        private int _nextIndex;
+
+        public Reels (List<List<string>> reels, int nextIndex)
         {
             _reels = reels;
+            _index = 0;
+            _nextIndex = nextIndex;
         }
 
-        public static Reels Create(List<List<string>> reels)
+        public static Reels Create(List<List<string>> reels, int nextIndex)
         {
-            return new Reels(reels);
+            return new Reels(reels, nextIndex);
         } 
 
         public bool IsHitRow(int betLine)
