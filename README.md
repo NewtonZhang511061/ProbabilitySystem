@@ -59,7 +59,13 @@ TDD就像早餐店模具, 我們要煎出漂亮的蛋, 快速又漂亮
 ```
 Martin Fowler: 請不要試圖猜想
 ```
-- 使用工廠取得物件
+- 避免Feature Envy\
+將邏輯封裝在Reels\
+海勒姆定律
+```
+不要在我的地盤搞事
+```
+- 使用工廠取得物\
 例如:
 > 取得持久化資料 : Restore()\
 > 轉化物件: to(), from()\
@@ -69,4 +75,32 @@ Vaughn Vernon: 使用Constructor取得物件將會降低對模型的表達性
 ```
 
 ## 接下來很舒服了
-因為加過測項
+繼續後面測項\
+有了擊中第一排, 我們還需要贏得第二三排\
+很好!果不其然的紅燈了\
+趕快!綠燈吧
+```csharp
+public int Spin(int betLine)
+{
+    if (_reels.IsHitRow(betLine) && betLine == 1) return 20;
+    if (_reels.IsHitRow(betLine) && betLine == 2) return 20;
+    if (_reels.IsHitRow(betLine) && betLine == 3) return 20;
+    return 0;
+}
+```
+就這樣?!\
+沒錯就這樣, 來看看是不是綠燈了吧\
+***PASS***\
+因為我們我們做了***重構***\
+快步重構(不要超出測試邊界)的重要性, 在這個例子中就看出來了
+```
+Kent Beck: Make the change easy, them make the easy change
+```
+
+
+
+
+
+
+
+

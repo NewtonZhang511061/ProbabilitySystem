@@ -20,14 +20,14 @@ namespace Domain
             return new Reels(reels);
         } 
 
-        public int Spin(int betLine)
+        public bool IsHitRow(int betLine)
         {
             var equalSymbolSet = new HashSet<string>();
             foreach (var reel in _reels)
             {
                 equalSymbolSet.Add(reel[betLine-1]);
             }
-            return equalSymbolSet.Count == 1?20:0;
+            return equalSymbolSet.Count == 1;
         }
     }
 }
