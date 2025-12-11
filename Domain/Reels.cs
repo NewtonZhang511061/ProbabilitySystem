@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Domain
@@ -25,12 +26,18 @@ namespace Domain
             return new Reels(reels, nextIndex);
         } 
 
-        public bool IsHitRow(int betLine)
+        public void Spin()
         {
+            _index = _nextIndex;
+        }
+
+        public bool IsRowHit(int betLine)
+        {
+            var finalRow = betLine - 1 + _nextIndex;
             var equalSymbolSet = new HashSet<string>();
             foreach (var reel in _reels)
             {
-                equalSymbolSet.Add(reel[betLine-1]);
+                equalSymbolSet.Add(reel[finalRow]);
             }
             return equalSymbolSet.Count == 1;
         }

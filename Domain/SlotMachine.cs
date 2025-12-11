@@ -22,9 +22,9 @@ namespace Domain
 
         public int Spin(int betLine)
         {
-            if (_reels.IsHitRow(betLine) && betLine == 1) return 20;
-            if (_reels.IsHitRow(betLine) && betLine == 2) return 20;
-            if (_reels.IsHitRow(betLine) && betLine == 3) return 20;
+            if (_reels.IsRowHit(betLine) && betLine == 1) return 20;
+            if (_reels.IsRowHit(betLine) && betLine == 2) return 20;
+            if (_reels.IsRowHit(betLine) && betLine == 3) return 20;
             return 0;
         }
     }
