@@ -8,7 +8,14 @@ namespace ProbabilitySystemTests
         [Fact]
         public void WhenLose_ShouldReturnBet0()
         {
-            var slotMachine = new SlotMachine();
+            var slotMachine = new SlotMachine(Reels.Create(new List<List<string>>
+            {
+                new List<string> { "A", "Q", "K" },
+                new List<string> { "A", "Q", "K" },
+                new List<string> { "A", "Q", "K" },
+                new List<string> { "A", "Q", "K" },
+                new List<string> { "A", "J", "$" }
+            }));
 
             var bet = slotMachine.Spin(2);
 
@@ -18,7 +25,14 @@ namespace ProbabilitySystemTests
         [Fact]
         public void WhenHitRow1_ShouldReturnBet20()
         {
-            var slotMachine = new SlotMachine();
+            var slotMachine = new SlotMachine(Reels.Create(new List<List<string>>
+            {
+                new List<string> { "A", "Q", "K" },
+                new List<string> { "A", "Q", "K" },
+                new List<string> { "A", "Q", "K" },
+                new List<string> { "A", "Q", "K" },
+                new List<string> { "A", "J", "$" }
+            }));
 
             var bet = slotMachine.Spin(1);
 
