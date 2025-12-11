@@ -127,3 +127,4 @@ Kent Beck: Make the change easy, them make the easy change
 現在測試紅了, 我們想辦法讓他綠燈
 
 ## 接下來呢?
+試圖加入觀景窗

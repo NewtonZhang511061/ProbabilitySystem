@@ -22,6 +22,7 @@ namespace Domain
 
         public int Spin(int betLine)
         {
+            _reels.Spin();
             if (_reels.IsRowHit(betLine) && betLine == 1) return 20;
             if (_reels.IsRowHit(betLine) && betLine == 2) return 20;
             if (_reels.IsRowHit(betLine) && betLine == 3) return 20;

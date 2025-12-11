@@ -11,14 +11,14 @@ namespace Domain
     public class Reels
     {
         private List<List<string>> _reels;
-        private int _index;
-        private int _nextIndex;
+        private int _startIndex;
+        private int _spinPace;
 
-        public Reels (List<List<string>> reels, int nextIndex)
+        public Reels (List<List<string>> reels, int spinPace)
         {
             _reels = reels;
-            _index = 0;
-            _nextIndex = nextIndex;
+            _startIndex = 0;
+            _spinPace = spinPace;
         }
 
         public static Reels Create(List<List<string>> reels, int nextIndex)
@@ -28,16 +28,20 @@ namespace Domain
 
         public void Spin()
         {
-            _index = _nextIndex;
+            _startIndex = _spinPace;
         }
 
         public bool IsRowHit(int betLine)
         {
-            var finalRow = betLine - 1 + _nextIndex;
-            var equalSymbolSet = new HashSet<string>();
+            var screenReels = new List<List<string>>();
             foreach (var reel in _reels)
             {
-                equalSymbolSet.Add(reel[finalRow]);
+                screenReels.Add(reel.GetRange(_startIndex, 3));
+            }
+            var equalSymbolSet = new HashSet<string>();
+            foreach (var reel in screenReels)
+            {
+                equalSymbolSet.Add(reel[betLine - 1]);
             }
             return equalSymbolSet.Count == 1;
         }
