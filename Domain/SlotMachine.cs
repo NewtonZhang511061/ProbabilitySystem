@@ -20,12 +20,12 @@ namespace Domain
             return new SlotMachine(reels);
         }
 
-        public int Spin(int betLine)
+        public int Spin(int hitLine)
         {
             _reels.Spin();
-            if (_reels.IsRowHit(betLine) && betLine == 1) return 20;
-            if (_reels.IsRowHit(betLine) && betLine == 2) return 20;
-            if (_reels.IsRowHit(betLine) && betLine == 3) return 20;
+            if (_reels.IsRowHit(hitLine) && hitLine == 1) return 20;
+            if (_reels.IsRowHit(hitLine) && hitLine == 2) return 20;
+            if (_reels.IsRowHit(hitLine) && hitLine == 3) return 20;
             return 0;
         }
     }
