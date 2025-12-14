@@ -26,13 +26,14 @@ namespace Domain
             return new Reels(reels, nextIndex);
         } 
 
-        public void Spin()
+        private void Spin()
         {
-            _startIndex = _spinPace;
+            _startIndex += _spinPace;
         }
 
         public bool IsRowHit(int hitLine)
         {
+            Spin();
             var screenReels = GetScreen();
             return screenReels.isRowHit(hitLine);
         }

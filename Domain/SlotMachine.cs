@@ -22,10 +22,10 @@ namespace Domain
 
         public int Spin(int hitLine)
         {
-            _reels.Spin();
-            if (_reels.IsRowHit(hitLine) && hitLine == 1) return 20;
-            if (_reels.IsRowHit(hitLine) && hitLine == 2) return 20;
-            if (_reels.IsRowHit(hitLine) && hitLine == 3) return 20;
+            var isRowHit = _reels.IsRowHit(hitLine);
+            if (isRowHit && hitLine == 1) return 20;
+            if (isRowHit && hitLine == 2) return 20;
+            if (isRowHit && hitLine == 3) return 20;
             return 0;
         }
     }
