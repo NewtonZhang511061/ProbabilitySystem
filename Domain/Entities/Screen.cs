@@ -18,7 +18,7 @@ namespace Domain
             return new Screen(screenReels);
         }
 
-        public bool isRowHit(int hitLine)
+        public bool isScreenRowHit(int hitLine)
         {
             var equalSymbolSet = new HashSet<string>();
             foreach (var reel in _screenReels)

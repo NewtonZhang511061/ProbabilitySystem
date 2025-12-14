@@ -134,3 +134,5 @@ Kent Beck: Make the change easy, them make the easy change
 我們在**一個**測試的保護下做了**兩個**新功能!!
 
 順勢做出滾輪組
+
+## 分別控制各個滾輪
