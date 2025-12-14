@@ -136,3 +136,9 @@ Kent Beck: Make the change easy, them make the easy change
 順勢做出滾輪組
 
 ## 分別控制各個滾輪
+
+先Fake It, 做邏輯
+
+重構出數字產生器
+
+## 多型的好處
