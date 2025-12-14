@@ -43,6 +43,8 @@
     <Reference Include="Microsoft.Analytics.Types" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Bet.cs" />
+    <Compile Include="Entities\PayTable.cs" />
     <Compile Include="RandomNumberGeneratorImpl\NativeRandomGeneratorImpl.cs" />
     <Compile Include="RandomNumberGeneratorImpl\DesignatedRandomNumberGeneratorImpl.cs" />
     <Compile Include="Gateway\RandomNumberGeneratorGateway.cs" />

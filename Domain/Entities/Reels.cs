@@ -5,13 +5,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Domain
 {
     public class Reels
     {
         private List<Reel> _reels;
-
         private RandomNumberGeneratorGateway _randomNumberGenerator;
 
         public Reels(List<List<string>> reels, RandomNumberGeneratorGateway randomNumberGenerator)
@@ -25,19 +25,20 @@ namespace Domain
             return new Reels(reels, randomNumberGenerator);
         }
 
-
-        public bool IsRowHit(int hitLine)
+        public void Spin()
         {
-            var screenReels = GetScreen();
-            return screenReels.isScreenRowHit(hitLine);
+            foreach (var reel in _reels)
+            {
+                reel.Spin(_randomNumberGenerator.Generate());
+            }
         }
 
-        private Screen GetScreen()
+        public Screen GetScreen()
         {
             var screenReels = new List<List<string>>();
             for (var index = 0; index < _reels.Count; index++)
             {
-                screenReels.Add(_reels[index].GetScreenReel(_randomNumberGenerator.Generate()));
+                screenReels.Add(_reels[index].GetScreenReel());
             }
             return Screen.Create(screenReels);
         }

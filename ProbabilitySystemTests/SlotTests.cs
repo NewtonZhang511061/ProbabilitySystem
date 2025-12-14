@@ -1,4 +1,5 @@
 using Domain;
+using Domain.Entities;
 using Xunit;
 
 namespace ProbabilitySystemTests
@@ -17,7 +18,7 @@ namespace ProbabilitySystemTests
                 new List<string> { "J", "J", "$" }
             }, DesignatedRandomNumberGeneratorImpl.Create([0, 0, 0, 0, 0])));
 
-            var bet = slotMachine.Spin(1);
+            var bet = slotMachine.Spin(Bet.Create(1));
 
             Assert.Equal(bet, 0);
         }
@@ -34,7 +35,7 @@ namespace ProbabilitySystemTests
                 new List<string> { "A", "J", "$" }
             }, DesignatedRandomNumberGeneratorImpl.Create([0, 0, 0, 0, 0])));
 
-            var bet = slotMachine.Spin(1);
+            var bet = slotMachine.Spin(Bet.Create(1));
 
             Assert.Equal(bet, 20);
         }
@@ -51,7 +52,7 @@ namespace ProbabilitySystemTests
                 new List<string> { "J", "Q", "$" }
             }, DesignatedRandomNumberGeneratorImpl.Create([0, 0, 0, 0, 0])));
 
-            var bet = slotMachine.Spin(2);
+            var bet = slotMachine.Spin(Bet.Create(2));
 
             Assert.Equal(bet, 20);
         }
@@ -68,7 +69,7 @@ namespace ProbabilitySystemTests
                 new List<string> { "J", "J", "K" }
             }, DesignatedRandomNumberGeneratorImpl.Create([0, 0, 0, 0, 0])));
 
-            var bet = slotMachine.Spin(3);
+            var bet = slotMachine.Spin(Bet.Create(3));
 
             Assert.Equal(bet, 20);
         }
@@ -85,9 +86,27 @@ namespace ProbabilitySystemTests
                 new List<string> { "S", "J", "K", "K", "J", "S", "K" }
             }, DesignatedRandomNumberGeneratorImpl.Create([0, 1, 2, 3, 4])));
 
-            var bet = slotMachine.Spin(3);
+            var bet = slotMachine.Spin(Bet.Create(3));
 
             Assert.Equal(bet, 20);
         }
+
+        [Fact]
+        public void WhenHitRow123_ShouldReturnBet20()
+        {
+            var slotMachine = new SlotMachine(Reels.Create(new List<List<string>>
+            {
+                new List<string> { "A", "Q", "K", "K" },
+                new List<string> { "A", "Q", "K", "K" },
+                new List<string> { "A", "Q", "K", "K" },
+                new List<string> { "A", "Q", "K", "K" },
+                new List<string> { "J", "J", "J", "K" }
+            }, DesignatedRandomNumberGeneratorImpl.Create([1, 1, 1, 1, 1])));
+
+            var bet = slotMachine.Spin(Bet.Create(1, 2, 3));
+
+            Assert.Equal(bet, 20);
+        }
+
     }
 }

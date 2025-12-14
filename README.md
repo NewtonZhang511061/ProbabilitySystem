@@ -142,3 +142,12 @@ Kent Beck: Make the change easy, them make the easy change
 重構出數字產生器
 
 ## 多型的好處
+
+## 多押多中
+
+重構出注單和賠率表
+消滅***中間人***
+
+```
+建模的過程逐漸讓Model能夠表達現實世界
+```

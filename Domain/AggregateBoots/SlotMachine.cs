@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Domain
@@ -12,21 +14,22 @@ namespace Domain
     {
         private Reels _reels { get; set; }
 
-        public SlotMachine(Reels reels) { 
+        public SlotMachine(Reels reels)
+        {
             _reels = reels;
         }
 
-        public static SlotMachine Create(Reels reels, int nextIndex) { 
+        public static SlotMachine Create(Reels reels, int nextIndex)
+        {
             return new SlotMachine(reels);
         }
 
-        public int Spin(int hitLine)
+        public int Spin(Bet bet)
         {
-            var isRowHit = _reels.IsRowHit(hitLine);
-            if (isRowHit && hitLine == 1) return 20;
-            if (isRowHit && hitLine == 2) return 20;
-            if (isRowHit && hitLine == 3) return 20;
-            return 0;
+            _reels.Spin();
+            var screenReels = _reels.GetScreen();
+            var payTable = PayTable.Create();
+            return payTable.CalcBet(bet, screenReels);
         }
     }
 }
